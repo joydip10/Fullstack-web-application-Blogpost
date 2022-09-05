@@ -52,12 +52,12 @@ const Blog = () => {
 
         const currentUser = JSON.parse(localStorage.getItem('social-bugg-user'));
 
-        const userPrevious = blog.likes.find(like => like?.email === currentUser?.email);
+        const userPrevious = blog?.likes.find(like => like?.email === currentUser?.email);
 
         if (userPrevious?.email) {
-            const remainingLikes = blog.likes.filter(like => like?.email !== currentUser?.email);
+            const remainingLikes = blog?.likes.filter(like => like?.email !== currentUser?.email);
             blog.likes = remainingLikes;
-            updatedLikes = blog.likes
+            updatedLikes = blog?.likes
 
             const updated = { ...blog, likes: updatedLikes };
 
@@ -75,7 +75,7 @@ const Blog = () => {
                 email: currentUser?.email,
                 displayName: currentUser?.displayName
             })
-            updatedLikes = blog.likes;
+            updatedLikes = blog?.likes;
             const updated = { ...blog, likes: updatedLikes };
 
             const name = currentUser?.displayName;
@@ -92,7 +92,7 @@ const Blog = () => {
     const addComment = (comment) => {
         setLoading(true);
         let updatedComments;
-        blog.comments.push({
+        blog?.comments.push({
             id: ID(),
             userid: currentUser?.id,
             email: currentUser?.email,
@@ -101,7 +101,7 @@ const Blog = () => {
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString(),
         })
-        updatedComments = blog.comments;
+        updatedComments = blog?.comments;
         const updated = { ...blog, comments: updatedComments };
         updateBlog(id, updated)
             .then(res => {
@@ -115,10 +115,10 @@ const Blog = () => {
 
     const removeComment = (id) => {
         setLoading(true);
-        const othercomments = blog.comments.filter(cmt => cmt.id !== id);
+        const othercomments = blog?.comments.filter(cmt => cmt.id !== id);
         blog.comments = othercomments;
 
-        const updatedComments = blog.comments;
+        const updatedComments = blog?.comments;
         const updated = { ...blog, comments: updatedComments };
 
         updateBlog(id, updated)
@@ -182,10 +182,10 @@ const Blog = () => {
                             <CardActions>
                                 <div sx={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}>
                                 {
-                                    (blog.comments) &&
+                                    (blog?.comments) &&
                                     <>
                                         {
-                                            blog.comments.map(comment => <Comment key={comment.id} removeComment={removeComment} comment={comment}></Comment>)
+                                            blog?.comments.map(comment => <Comment key={comment?.id} removeComment={removeComment} comment={comment}></Comment>)
                                         }
                                     </>
                                 }

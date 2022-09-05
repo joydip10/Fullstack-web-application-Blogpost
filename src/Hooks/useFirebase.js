@@ -156,16 +156,9 @@ const useFirebase = () => {
   }
 
   const updateBlog = async (id, updated) => {
-    let updatedDoc
-
-    try {
-      const q = doc(fireDb, 'blogs', id);
-      updatedDoc = await setDoc(q, updated);
-    } catch (error) {
-      toast.error(`Something went wrong`);
-    }
-
-    return updatedDoc;
+    const q = doc(fireDb, 'blogs', id);
+    return await setDoc(q, updated);
+    
   }
 
   const deleteBlog = async (id) => {
