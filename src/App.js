@@ -7,7 +7,6 @@ import AuthProvider from './Components/AuthProvider/AuthProvider';
 import Login from './Pages/Login';
 import Registration from './Pages/Registration';
 import Addblog from './Pages/Addblog';
-import Myblogs from './Pages/Myblogs';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
 import 'react-toastify/dist/ReactToastify.css';

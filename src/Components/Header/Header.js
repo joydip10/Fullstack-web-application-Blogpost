@@ -37,14 +37,14 @@ function Header(props) {
       </Typography>
       <Divider />
       <List>
+      <ListItem key="Home" onClick={() => { navigate('/home') }} disablePadding>
+          <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
         <ListItem key="AddBlog" onClick={() => { navigate('/addblog') }} disablePadding>
           <ListItemButton sx={{ textAlign: 'center' }}>
             <ListItemText primary="Addblog" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key="MyBlogs" onClick={() => { navigate('/myblogs') }} disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }}>
-            <ListItemText primary="MyBlogs" />
           </ListItemButton>
         </ListItem>
         {
@@ -91,11 +91,11 @@ function Header(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 
+            <Button key="Home" onClick={() => { navigate('/home') }} sx={{ color: '#fff' }}>
+              Home
+            </Button>
             <Button key="Addblog" onClick={() => { navigate('/addblog') }} sx={{ color: '#fff' }}>
               Addblog
-            </Button>
-            <Button key="Myblogs" onClick={() => { navigate('/myblogs') }} sx={{ color: '#fff' }}>
-              Myblogs
             </Button>
             {
               (user) &&
