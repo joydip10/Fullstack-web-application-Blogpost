@@ -52,10 +52,10 @@ const Blog = () => {
 
         const currentUser = JSON.parse(localStorage.getItem('social-bugg-user'));
 
-        const userPrevious = blog.likes.find(like => like.email === currentUser.email);
+        const userPrevious = blog.likes.find(like => like?.email === currentUser?.email);
 
         if (userPrevious?.email) {
-            const remainingLikes = blog.likes.filter(like => like.email !== currentUser.email);
+            const remainingLikes = blog.likes.filter(like => like?.email !== currentUser?.email);
             blog.likes = remainingLikes;
             updatedLikes = blog.likes
 
