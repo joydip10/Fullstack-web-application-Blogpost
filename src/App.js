@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import AuthProvider from './Components/AuthProvider/AuthProvider';
+import Login from './Pages/Login';
+import Registration from './Pages/Registration';
+import Addblog from './Pages/Addblog';
+import Myblogs from './Pages/Myblogs';
+import Home from './Pages/Home';
+import Profile from './Pages/Profile';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Blog from "./Pages/Blog";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <ToastContainer/>
+        <Routes>
+          <Route exact path="/" element={<PrivateRoute><Home /></PrivateRoute>}></Route>
+          <Route exact path="/home" element={<PrivateRoute><Home /></PrivateRoute>}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/registration" element={<Registration />}></Route>
+          <Route exact path="/addblog" element={<PrivateRoute><Addblog /></PrivateRoute>}></Route>
+          <Route exact path="/myblogs" element={<PrivateRoute><Myblogs /></PrivateRoute>}></Route>
+          <Route exact path="/profile/:id" element={<PrivateRoute><Profile /></PrivateRoute>}></Route>
+          <Route exact path="/blog/:id" element={<PrivateRoute><Blog /></PrivateRoute>}></Route>
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
