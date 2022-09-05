@@ -2,7 +2,8 @@
 
 Live site link- https://bestblogpost.netlify.app
 
-###Used Technologies-
+##Used Technologies-
+
 HTML
 CSS
 Material UI
