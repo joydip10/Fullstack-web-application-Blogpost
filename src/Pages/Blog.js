@@ -50,7 +50,7 @@ const Blog = () => {
 
         let updatedLikes;
 
-        const currentUser = JSON.parse(localStorage.getItem('social-bugg-user'));
+        const currentUser = JSON.parse(localStorage.getItem('blogpost-user'));
 
         const userPrevious = blog?.likes.find(like => like?.email === currentUser?.email);
 
@@ -63,11 +63,16 @@ const Blog = () => {
 
             updateBlog(id, updated)
                 .then(res => {
-                    toast.success('Unliked the post');
+                    toast.success('Unliked the Blog');
                     const updatedBlog = res?.data();
                     setBlog((updatedBlog) => updatedBlog);
+                })
+                .catch(err=>{
+                    toast.error('Something went error!');
+                })
+                .finally(()=>{
                     setLoading(false);
-                });
+                })
         }
         else {
             blog.likes.push({
@@ -78,14 +83,18 @@ const Blog = () => {
             updatedLikes = blog?.likes;
             const updated = { ...blog, likes: updatedLikes };
 
-            const name = currentUser?.displayName;
-            updateBlog(id, updated, name)
+            updateBlog(id, updated)
                 .then(res => {
                     toast.success('Liked the blog!');
                     const updatedBlog = res?.data();
                     setBlog((updatedBlog) => updatedBlog);
+                })
+                .catch(err=>{
+                    toast.success('Something is wrong!');
+                })
+                .finally(()=>{
                     setLoading(false);
-                });
+                })
         }
     }
 
@@ -109,8 +118,13 @@ const Blog = () => {
                 const updatedBlog = res?.data();
                 setBlog((updatedBlog) => updatedBlog);
                 setComment("");
+            })
+            .catch(err=>{
+                toast.error('Something error');
+            })
+            .finally(()=>{
                 setLoading(false);
-            });
+            })
     }
 
     const removeComment = (id) => {
@@ -148,6 +162,9 @@ const Blog = () => {
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
                                         <span style={{ color: 'darkblue', fontWeight: 'bold' }}>{blog?.title}</span>
+                                    </Typography>
+                                    <Typography gutterBottom variant="p" component="div">
+                                        <span style={{ color: 'darkblue', fontWeight: 'bold' }}>{blog?.creator?.displayName}</span>
                                     </Typography>
                                     <Typography gutterBottom variant="p" component="div">
                                         <span style={{ color: 'gray', fontWeight: 'bold' }}>{blog?.date}</span>
