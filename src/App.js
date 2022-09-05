@@ -27,7 +27,6 @@ function App() {
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/registration" element={<Registration />}></Route>
           <Route exact path="/addblog" element={<PrivateRoute><Addblog /></PrivateRoute>}></Route>
-          <Route exact path="/myblogs" element={<PrivateRoute><Myblogs /></PrivateRoute>}></Route>
           <Route exact path="/profile/:id" element={<PrivateRoute><Profile /></PrivateRoute>}></Route>
           <Route exact path="/blog/:id" element={<PrivateRoute><Blog /></PrivateRoute>}></Route>
         </Routes>
