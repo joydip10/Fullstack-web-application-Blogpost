@@ -13,7 +13,7 @@ const BlogCard = ( props ) => {
     const navigate=useNavigate();
 
     return (
-        <Grid item xs={2} sm={4} md={4}>
+        <Grid item xs={4} sm={8} md={4}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                     <CardMedia

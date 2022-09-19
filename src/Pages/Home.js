@@ -9,6 +9,7 @@ import BlogCard from '../Components/BlogCard/BlogCard';
 import AssistantDirectionTwoToneIcon from '@mui/icons-material/AssistantDirectionTwoTone';
 import { TextField } from '@mui/material';
 
+//Adding Home- The main page
 const Home = () => {
     const [blogs, setBlogs] = useState([]);
     const [displayBlogs, setDisplay] = useState([]);
